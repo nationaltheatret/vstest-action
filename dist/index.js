@@ -32089,7 +32089,7 @@ function run() {
             });
             core.info(`Downloading test tools...`);
             let workerZipPath = path.join(__dirname, 'win-x64.zip');
-            yield exec.exec(`powershell Invoke-WebRequest -Uri "https://aka.ms/local-worker-win-x64" -OutFile ${workerZipPath}`);
+            // yield exec.exec(`powershell Invoke-WebRequest -Uri "https://aka.ms/local-worker-win-x64" -OutFile ${workerZipPath}`);
             core.info(`Unzipping test tools...`);
             core.debug(`workerZipPath is ${workerZipPath}`);
             yield exec.exec(`powershell Expand-Archive -Path ${workerZipPath} -DestinationPath ${__dirname}`);
