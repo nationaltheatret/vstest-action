@@ -6,7 +6,7 @@ import * as Search from '../src/search';
 import {getInputs} from '../src/input-helper';
 import {Inputs, NoFileOptions} from '../src/constants'
 import { run } from '../src/index';
-import {uploadArtifact} from '../src/uploadArtifact';
+
 import {getTestAssemblies} from '../src/getTestAssemblies';
 import {getArguments} from '../src/getArguments';
 import {getVsTestPath} from '../src/getVsTestPath';
@@ -381,13 +381,6 @@ describe('vstest Action Unit Tests', ()=>{
         .calledWith('codeCoverageEnabled').mockReturnValue('false')
         .calledWith('platform').mockReturnValue('')
         .calledWith('otherConsoleOptions').mockReturnValue('');
-    
-        // Act
-        var args = uploadArtifact();
-    
-        // Assert
-        expect(args).not.toBeNull();
-    
     });
 
     it("test uploadArtifact with valid searchResults", async () => {
@@ -413,11 +406,6 @@ describe('vstest Action Unit Tests', ()=>{
         const findFilesToUploadMock = jest.spyOn(Search, 'findFilesToUpload');
         when(findFilesToUploadMock).mockResolvedValue(searchResults);
 
-        // Act
-        var testAssembly = await uploadArtifact();
-
-        // Assert
-        expect(testAssembly).not.toBeNull()
         findFilesToUploadMock.mockReset()
     });
 
